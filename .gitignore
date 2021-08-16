@@ -7,6 +7,13 @@
 *.so
 *.dylib
 
+.idea
+bin
+tmp
+*.xls
+*.xlsx
+gowatch.yml
+
 # Test binary, built with `go test -c`
 *.test
 
