@@ -24,10 +24,14 @@ func Routers() *gin.Engine {
 	//方式2
 	//Router.Use(middleware.CrosHandler())
 
+	//加载HTML模版
+	Router.LoadHTMLFiles("templates/*")
+
 	//分组进行权限校验
 	PublicGroup := Router.Group("")
 	{
 		router.InitBaseRouter(PublicGroup)
+		router.InitResRouter(PublicGroup)
 	}
 
 	// PrivateGroup := Router.Group("")

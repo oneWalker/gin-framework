@@ -10,7 +10,8 @@
   * [x]  文件上传的基本解析
   * [x]  各种数据格式的响应：json,struct,xml,yaml,protobuf
   * [x]  HTML模版渲染
-
+  * [x]  重定向
+  * [x]  异步
 * [x]  router
   * [x]  定义基本路由规则
   * [x]  定义基本响应格式以及错误抛出code规则

@@ -13,6 +13,9 @@ func InitResRouter(Router *gin.RouterGroup) *gin.RouterGroup {
 		ResGroup.GET("resXML", controller.ResXML)
 		ResGroup.GET("resYAML", controller.ResYAML)
 		ResGroup.GET("resProtobuf", controller.ResProtobuf)
+		ResGroup.GET("resTemplate", controller.ResTemplate)
+		ResGroup.GET("resRedirect", controller.ResRedirect)
+		ResGroup.GET("resAsync", controller.ResAsync)
 	}
 	return ResGroup
 }
