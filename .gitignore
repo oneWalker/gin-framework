@@ -13,6 +13,7 @@ tmp
 *.xls
 *.xlsx
 gowatch.yml
+vendor
 
 # Test binary, built with `go test -c`
 *.test
