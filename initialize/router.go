@@ -13,7 +13,7 @@ func Routers() *gin.Engine {
 	var Router = gin.Default()
 
 	//设置相应的跨域方式
-	//方式1
+	//方式1：同时也是全局中间件的设置方式
 	Router.Use(cors.New(cors.Config{
 		AllowOriginFunc:  func(origin string) bool { return true },
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "PATCH"},
