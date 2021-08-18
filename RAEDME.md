@@ -15,13 +15,13 @@
 * [x]  router
   * [x]  定义基本路由规则
   * [x]  定义基本响应格式以及错误抛出code规则
-* [x]  service
+* service
   * [ ]  mysql操作的基本demo
   * [ ]  mongodb操作的基本demo
   * [ ]  redis操作的基本demo
-* [ ]  Database初始化相关：
-  * [ ]  mysql
-  * [ ]  mogodb
+* Database初始化相关：
+  * [x]  mysql
+  * [x]  mogodb
   * [ ]  redis
 * [ ]  定时任务
 * [ ]  middleware
@@ -33,9 +33,11 @@
 * [ ]  消息中间件
 * [x]  安全和跨域配置
 * [ ]  全局变量相关
+* [ ]  区分开发环境和正式环境
 * [ ]  链路追踪
 * [ ]  编译程序应用
 * [ ]  优雅重启和停止
+
 * Package相关
   * [ ] logrus 日志输送相关框架，与原有的go日志包相互兼容
   * [ ] cobra<https://github.com/spf13/cobra> 是一个用来生成应用和命令文件的脚手架

@@ -21,19 +21,41 @@
 package main
 
 import (
-	"fmt"
 	"gin-practice/initialize"
+	mongodb "gin-practice/pkg/db/mongodb"
+	mysql "gin-practice/pkg/db/mysql"
+	"log"
+	"os"
+
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	//数据库
-	// if err := model.InitMySql(); err != nil {
-	// 	fmt.Println(err.Error())
-	// }
-	//路由相关的
+	//设置配置环境
+	//加载.env文件
+	//获取运行环境
+	//读取配置文件，解析配置文件（放入相应的数据库中）
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatalf("Error loading .env file #%v ", err)
+	}
+	//根据环境更改gin的模式
+	env := os.Getenv("ENV")
+	if env == "pro" {
+		gin.SetMode(gin.ReleaseMode)
+	}
+	//mongodb数据库
+	if err := mongodb.Init(); err != nil {
+		return
+	}
+	//mysql数据库
+	if err := mysql.Init(); err != nil {
+		return
+	}
+
+	//Router的初始化
 	r := initialize.Routers()
-	//客户端
-	//initialize.InitYunshixun()
+
 	r.Run(":8080")
-	fmt.Println("启动成功了")
 }
