@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	mongodb *mongo.Database
+	Mongodb *mongo.Database
 	client  *mongo.Client
 )
 
@@ -35,7 +35,7 @@ func Init() error {
 		return err
 	}
 	//选择数据库
-	mongodb = client.Database("test")
+	Mongodb = client.Database("test")
 	logrus.Info("mongo connect successfully")
 	return nil
 }

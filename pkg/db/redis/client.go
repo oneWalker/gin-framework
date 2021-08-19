@@ -26,6 +26,7 @@ func Init() error {
 	}
 
 	Redis = client
+	logrus.Info("redis connect successfully")
 	return err
 }
 
@@ -35,6 +36,6 @@ func Close() error {
 			return err
 		}
 	}
-	logrus.Println("mysql connect closed")
+	logrus.Println("redis connect closed")
 	return nil
 }

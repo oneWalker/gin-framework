@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	db *gorm.DB
+	DB *gorm.DB
 )
 
 //Init初始化数据库
@@ -27,24 +27,23 @@ func Init() (err error) {
 		dsn = config.DevDsn()
 	}
 
-	if db, err = gorm.Open("mysql", dsn); err != nil {
+	if DB, err = gorm.Open("mysql", dsn); err != nil {
 		logrus.Fatalf("mysql connect failed: %v", err)
 	}
-	db.LogMode(true)
+	DB.LogMode(true)
 
-	if err = db.DB().Ping(); err != nil {
+	if err = DB.DB().Ping(); err != nil {
 		log.Fatalf("database heartbeat failed: %v", err)
 	}
 
 	logrus.Info("mysql connect successfully")
-
 	return err
 }
 
 //close Mysql
 func Close() error {
-	if db != nil {
-		if err := db.Close(); err != nil {
+	if DB != nil {
+		if err := DB.Close(); err != nil {
 			return err
 		}
 	}

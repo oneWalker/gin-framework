@@ -1,5 +1,4 @@
-# gin-framework
-This is a golang backend service demo based on gin-framework.
+# Gin-Practice实现相关功能或者Demo
 
 没有上传vendor文件，所以初始化时需要使用以下命令
 `go mod vendor`
