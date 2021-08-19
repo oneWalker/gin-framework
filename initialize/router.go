@@ -32,6 +32,8 @@ func Routers() *gin.Engine {
 	{
 		router.InitBaseRouter(PublicGroup)
 		router.InitResRouter(PublicGroup)
+		router.InitMysqlRouter(PublicGroup)
+		router.InitMongodbRouter(PublicGroup)
 	}
 
 	// PrivateGroup := Router.Group("")
