@@ -22,7 +22,7 @@
 * Database初始化相关：
   * [x]  mysql
   * [x]  mogodb
-  * [ ]  redis
+  * [x]  redis
 * [ ]  定时任务
 * [ ]  middleware
   * [ ]  数据统一处理中间件
@@ -37,6 +37,9 @@
 * [ ]  链路追踪
 * [ ]  编译程序应用
 * [ ]  优雅重启和停止
+* 请求第三方接口
+  * [ ]  HTTP方式请求
+  * [ ]  RPC方式请求
 
 * Package相关
   * [ ] logrus 日志输送相关框架，与原有的go日志包相互兼容

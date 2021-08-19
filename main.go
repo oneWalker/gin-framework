@@ -24,6 +24,7 @@ import (
 	"gin-practice/initialize"
 	mongodb "gin-practice/pkg/db/mongodb"
 	mysql "gin-practice/pkg/db/mysql"
+	redis "gin-practice/pkg/db/redis"
 	"log"
 	"os"
 
@@ -51,6 +52,11 @@ func main() {
 	}
 	//mysql数据库
 	if err := mysql.Init(); err != nil {
+		return
+	}
+
+	//redis数据库
+	if err := redis.Init(); err != nil {
 		return
 	}
 
