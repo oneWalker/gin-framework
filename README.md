@@ -16,7 +16,8 @@
   * [x]  定义基本路由规则
   * [x]  定义基本响应格式以及错误抛出code规则
 * service
-  * [ ]  mysql操作的基本demo
+  * [x]  mysql操作的基本demo
+    * [ ]  mysql执行后如何对获取到的数组进行修改
   * [ ]  mongodb操作的基本demo
   * [ ]  redis操作的基本demo
 * Database初始化相关：

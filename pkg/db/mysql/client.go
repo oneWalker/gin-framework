@@ -4,6 +4,7 @@ import (
 	config "gin-practice/config"
 	"log"
 	"os"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
@@ -31,10 +32,17 @@ func Init() (err error) {
 		logrus.Fatalf("mysql connect failed: %v", err)
 	}
 	DB.LogMode(true)
-
 	if err = DB.DB().Ping(); err != nil {
 		log.Fatalf("database heartbeat failed: %v", err)
 	}
+	// SetMaxIdleConns 设置空闲连接池中连接的最大数量
+	DB.DB().SetMaxIdleConns(10)
+
+	// SetMaxOpenConns 设置打开数据库连接的最大数量。
+	DB.DB().SetMaxOpenConns(100)
+
+	// SetConnMaxLifetime 设置了连接可复用的最大时间。
+	DB.DB().SetConnMaxLifetime(time.Hour)
 
 	logrus.Info("mysql connect successfully")
 	return err

@@ -54,6 +54,9 @@ func main() {
 	if err := mysql.Init(); err != nil {
 		return
 	}
+	//mysql数据表进行自动生成
+	// var foo modelSql.Foo
+	// mysql.DB.Begin().AutoMigrate(&foo)
 
 	//redis数据库
 	if err := redis.Init(); err != nil {

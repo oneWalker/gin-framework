@@ -11,4 +11,5 @@ require (
 	github.com/joho/godotenv v1.3.0
 	github.com/sirupsen/logrus v1.8.1
 	go.mongodb.org/mongo-driver v1.7.1
+	gorm.io/driver/mysql v1.1.2
 )

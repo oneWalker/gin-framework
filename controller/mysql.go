@@ -18,6 +18,7 @@ func AddFoo(ctx *gin.Context) {
 
 func GetFoo(ctx *gin.Context) {
 	data, err := foo.GetAll()
+	//data, err := foo.GetOne()
 	logrus.Info("data", data)
 	if err != nil {
 		logrus.Fatalf("query faild %v", err)
