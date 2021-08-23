@@ -1,4 +1,4 @@
-package cache
+package redis
 
 import (
 	"github.com/go-redis/redis"
@@ -7,7 +7,7 @@ import (
 )
 
 // RedisClient Redis缓存客户端单例
-var Redis *redis.Client
+var RedisDB *redis.Client
 
 func Init() error {
 	var err error
@@ -25,14 +25,14 @@ func Init() error {
 
 	}
 
-	Redis = client
+	RedisDB = client
 	logrus.Info("redis connect successfully")
 	return err
 }
 
 func Close() error {
-	if Redis != nil {
-		if err := Redis.Close(); err != nil {
+	if RedisDB != nil {
+		if err := RedisDB.Close(); err != nil {
 			return err
 		}
 	}
