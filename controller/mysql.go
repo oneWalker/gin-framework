@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	model "gin-practice/model/mysql"
 	"gin-practice/model/response"
 	"strconv"
