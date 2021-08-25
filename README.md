@@ -21,7 +21,7 @@
     * 常见的orm framework:gorm,xorm
   * [ ]  mongodb操作的基本demo
   * [x]  redis操作的基本demo
-    * 常见的库:go-redis(操作更方便，本教程使用)和redigo(官方推荐)
+    * 常见的库:go-redis(操作更方便，本教程使用<https://pkg.go.dev/github.com/go-redis/redis#section-documentation>)和redigo(官方推荐)
 * Database初始化相关：
   * [x]  mysql
   * [x]  mogodb
