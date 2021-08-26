@@ -29,8 +29,14 @@ func Init() error {
 	default:
 		uri = config.DevMongo()
 	}
+	option := options.Client().ApplyURI(uri)
+	//设置连接池个数
+	option.SetMaxPoolSize(10)
+	//设置连接超时时间
+	option.SetConnectTimeout(5 * time.Second)
+
 	//1.建立连接
-	if client, err = mongo.Connect(context.TODO(), options.Client().ApplyURI(uri).SetConnectTimeout(5*time.Second)); err != nil {
+	if client, err = mongo.Connect(context.TODO(), option); err != nil {
 		logrus.Fatalf("couldn't connect to mongo: %v", err)
 		return err
 	}

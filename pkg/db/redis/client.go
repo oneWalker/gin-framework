@@ -16,8 +16,8 @@ func Init() error {
 		Addr:     "127.0.0.1:6379",
 		Password: "",
 		DB:       int(db),
+		PoolSize: 10, //默认10个
 	})
-
 	_, err = client.Ping().Result()
 
 	if err != nil {

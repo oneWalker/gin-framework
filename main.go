@@ -23,8 +23,8 @@ package main
 import (
 	"gin-practice/initialize"
 	mongodb "gin-practice/pkg/db/mongodb"
-	mysql "gin-practice/pkg/db/mysql"
-	redis "gin-practice/pkg/db/redis"
+	//mysql "gin-practice/pkg/db/mysql"
+	//redis "gin-practice/pkg/db/redis"
 	"log"
 	"os"
 
@@ -46,22 +46,23 @@ func main() {
 	if env == "pro" {
 		gin.SetMode(gin.ReleaseMode)
 	}
+	//测试mongo相关demo暂时不使用
 	//mongodb数据库
 	if err := mongodb.Init(); err != nil {
 		return
 	}
-	//mysql数据库
-	if err := mysql.Init(); err != nil {
-		return
-	}
+	// //redis数据库
+	// if err := redis.Init(); err != nil {
+	// 	return
+	// }
+
+	// //mysql数据库
+	// if err := mysql.Init(); err != nil {
+	// 	return
+	// }
 	//mysql数据表进行自动生成
 	// var foo modelSql.Foo
 	// mysql.DB.Begin().AutoMigrate(&foo)
-
-	//redis数据库
-	if err := redis.Init(); err != nil {
-		return
-	}
 
 	//Router的初始化
 	r := initialize.Routers()

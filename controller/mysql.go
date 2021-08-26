@@ -22,7 +22,7 @@ func AddFoo(ctx *gin.Context) {
 	}
 	id, err := foo.Insert(create)
 	if err != nil {
-		logrus.Fatalf("parma auth faild %v", err)
+		logrus.Fatalf("data inserting faild %v", err)
 		return
 	}
 	create.ID = uint(id)

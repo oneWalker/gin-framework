@@ -19,6 +19,9 @@
   * [x]  mysql操作的基本demo
     * [x]  mysql执行后如何对获取到的数组进行修改
     * 常见的orm framework:gorm,xorm
+    * 一些三方工具
+      * 从数据库批量生成 models<https://github.com/Shelnutt2/db2struct>
+      * 通过 model 生成 CRUD 及 docs<https://github.com/cweagans/apig/tree/dep-conversion>
   * [ ]  mongodb操作的基本demo
   * [x]  redis操作的基本demo
     * 常见的库:go-redis(操作更方便，本教程使用<https://pkg.go.dev/github.com/go-redis/redis#section-documentation>)和redigo(官方推荐)
