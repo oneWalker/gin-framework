@@ -22,7 +22,7 @@
     * 一些三方工具
       * 从数据库批量生成 models<https://github.com/Shelnutt2/db2struct>
       * 通过 model 生成 CRUD 及 docs<https://github.com/cweagans/apig/tree/dep-conversion>
-  * [ ]  mongodb操作的基本demo
+  * [x]  mongodb操作的基本demo
   * [x]  redis操作的基本demo
     * 常见的库:go-redis(操作更方便，本教程使用<https://pkg.go.dev/github.com/go-redis/redis#section-documentation>)和redigo(官方推荐)
 * Database初始化相关：
@@ -39,7 +39,7 @@
 * [ ]  消息中间件
 * [x]  安全和跨域配置
 * [ ]  全局变量相关
-* [ ]  区分开发环境和正式环境
+* [x]  区分开发环境和正式环境
 * [ ]  链路追踪
 * [ ]  编译程序应用
 * [ ]  优雅重启和停止
@@ -52,5 +52,5 @@
   * [ ] cobra<https://github.com/spf13/cobra> 是一个用来生成应用和命令文件的脚手架
   * [ ] viber<https://github.com/spf13/viber> 读取golang相关的一些配置文件
 * 其他脚手架参考链接
-  * [ ] go-microservices-boilerplate<https://github.com/FeifeiyuM/go-microservices-boilerplate>
-  * [ ] blog-service<https://github.com/go-programming-tour-book/blog-service>
+  * go-microservices-boilerplate<https://github.com/FeifeiyuM/go-microservices-boilerplate>
+  * blog-service<https://github.com/go-programming-tour-book/blog-service>
