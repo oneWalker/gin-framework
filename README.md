@@ -18,7 +18,9 @@
 * service
   * [x]  mysql操作的基本demo
     * [x]  mysql执行后如何对获取到的数组进行修改
-    * 常见的orm framework:gorm,xorm
+    * 常见的orm framework
+      * gorm:项目中使用的mysql的主要orm<https://gorm.io/index.html>
+      * xorm<https://github.com/go-xorm/xorm>
     * 一些三方工具
       * 从数据库批量生成 models<https://github.com/Shelnutt2/db2struct>
       * 通过 model 生成 CRUD 及 docs<https://github.com/cweagans/apig/tree/dep-conversion>
@@ -29,7 +31,14 @@
   * [x]  mysql
   * [x]  mogodb
   * [x]  redis
-* [ ]  定时任务
+* [x]  定时任务
+  * cron定时:第三方依赖包
+    * robfig/cron<https://godoc.org/github.com/robfig/cron>
+    * gocron<https://pkg.go.dev/github.com/jasonlvhit/gocron>
+    * 定时任务管理系统（开箱即用）<https://github.com/ouqiang/gocron>
+  * timer定时<https://golang.org/pkg/time/#pkg-examples>
+    * NewTimer函数
+    * NewTicker函数
 * [ ]  middleware
   * [ ]  数据统一处理中间件
   * [ ]  jwt或者token验证中间件
