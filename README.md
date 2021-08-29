@@ -40,7 +40,7 @@
     * NewTimer函数
     * NewTicker函数
 * [ ]  middleware
-  * [ ]  数据统一处理中间件
+  * 数据统一处理中间件：go的参数校验需要根据相应的
   * [ ]  jwt或者token验证中间件
   * [ ]  数据校验插件
 * [ ]  RPC API相关
