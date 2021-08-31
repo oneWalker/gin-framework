@@ -53,11 +53,12 @@
 * [ ]  编译程序应用
 * [ ]  优雅重启和停止
 * 请求第三方接口
-  * [ ]  HTTP方式请求
+  * [x]  HTTP方式请求
+    * 参考网站:<https://www.cnblogs.com/Paul-watermelon/p/11386392.html>
   * [ ]  RPC方式请求
 
 * Package相关
-  * [ ] logrus 日志输送相关框架，与原有的go日志包相互兼容
+  * [x] logrus 日志输送相关框架，与原有的go日志包相互兼容
   * [ ] cobra<https://github.com/spf13/cobra> 是一个用来生成应用和命令文件的脚手架
   * [ ] viber<https://github.com/spf13/viber> 读取golang相关的一些配置文件
 * 其他脚手架参考链接
