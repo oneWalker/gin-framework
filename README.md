@@ -43,7 +43,8 @@
   * 数据统一处理中间件：go的参数校验需要根据相应的
   * [ ]  jwt或者token验证中间件
   * [ ]  数据校验插件
-* [ ]  RPC API相关
+* [ ] RPC API相关
+  * [ ]常见实现方案gRPC
 * [x]  单元测试
   * 参考demo<https://zhuanlan.zhihu.com/p/90632661>
 * [ ]  消息中间件
@@ -58,6 +59,10 @@
   * [x]  HTTP方式请求
     * 参考网站:<https://www.cnblogs.com/Paul-watermelon/p/11386392.html>
   * [ ]  RPC方式请求
+* [ ] 常见的数据格式
+  * [x] json json,struct,map之间的转换
+  * [ ] protobuf - 一般提供给RPC
+  * [ ] XML - xml和json之间的转换
 
 * Package相关
   * [x] logrus 日志输送相关框架，与原有的go日志包相互兼容
