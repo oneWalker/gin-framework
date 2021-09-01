@@ -71,3 +71,4 @@
 * 其他脚手架参考链接
   * go-microservices-boilerplate<https://github.com/FeifeiyuM/go-microservices-boilerplate>
   * blog-service<https://github.com/go-programming-tour-book/blog-service>
+  * 参考学习例子:<https://github.com/yeqown/playground/tree/master/gonic>
