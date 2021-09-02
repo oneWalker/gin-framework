@@ -43,7 +43,7 @@ func HttpCommon(host string, data map[string]string, method string, headers map[
 	req, _ := http.NewRequest(method, urlpath, inputIO)
 
 	for k, v := range headers {
-		if strings.ToLower(k) == "content" {
+		if strings.ToLower(k) == "content-type" {
 			hasContent = true
 		}
 		req.Header.Add(k, v)

@@ -21,15 +21,20 @@
 package main
 
 import (
+	"context"
 	"gin-practice/initialize"
 	mongodb "gin-practice/pkg/db/mongodb"
+	"net/http"
+	"os/signal"
+	"time"
+
 	//mysql "gin-practice/pkg/db/mysql"
 	//redis "gin-practice/pkg/db/redis"
-	"log"
 	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
@@ -39,7 +44,7 @@ func main() {
 	//读取配置文件，解析配置文件（放入相应的数据库中）
 	err := godotenv.Load(".env")
 	if err != nil {
-		log.Fatalf("Error loading .env file #%v ", err)
+		logrus.Fatalf("Error loading .env file #%v ", err)
 	}
 	//根据环境更改gin的模式
 	env := os.Getenv("ENV")
@@ -64,8 +69,35 @@ func main() {
 	// var foo modelSql.Foo
 	// mysql.DB.Begin().AutoMigrate(&foo)
 
-	//Router的初始化
-	r := initialize.Routers()
+	// //Router的初始化，原启动方式
+	// r := initialize.Routers()
+	// r.Run(":8080")
 
-	r.Run(":8080")
+	//优雅的启动和重启方式
+	srv := &http.Server{
+		Addr:    ":8080",
+		Handler: initialize.Routers(),
+	}
+
+	go func() {
+		// service connections
+		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			logrus.Fatalf("listen: %s\n", err)
+		}
+	}()
+
+	// Wait for interrupt signal to gracefully shutdown the server with
+	// a timeout of 5 seconds.
+	quit := make(chan os.Signal)
+	signal.Notify(quit, os.Interrupt)
+	<-quit
+	logrus.Println("Shutdown Server ...")
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	if err := srv.Shutdown(ctx); err != nil {
+		logrus.Fatal("Server Shutdown:", err)
+	}
+	logrus.Println("Server exiting")
+
 }

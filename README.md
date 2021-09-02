@@ -54,12 +54,14 @@
 * [ ]  链路追踪
 * 编译程序应用
   * [ ] Makefile相关
-* [ ]  优雅重启和停止
+* [x]  优雅重启和停止
+  * b4go1.8:[manners](https://github.com/braintree/manners),[graceful](https://github.com/tylerstillwater/graceful),[grace](https://github.com/facebookarchive/grace)
+  * now:内置方法Shutdown()
 * 请求第三方接口
   * [x]  HTTP方式请求
     * 参考网站:<https://www.cnblogs.com/Paul-watermelon/p/11386392.html>
   * [ ]  RPC方式请求
-* [ ] 常见的数据格式
+* [ ] App网络传输序列化协议
   * [x] json json,struct,map之间的转换
   * [ ] protobuf - 一般提供给RPC
   * [ ] XML - xml和json之间的转换
