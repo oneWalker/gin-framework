@@ -1,5 +1,6 @@
-//package service
-package main
+package service
+
+//package main
 
 import (
 	"encoding/json"
@@ -78,10 +79,10 @@ func JsonToXml() {
 	logrus.Info(string(sdXml))
 }
 
-func main() {
-	//XmlToStruct()
-	//StructToXml()
-	//JsonToMapDemo()
-	//XmlToJson()
-	//JsonToXml()
-}
+// main函数用于测试，需要运行使用时需要引入package main
+// func main() {
+// 	XmlToStruct()
+// 	StructToXml()
+// 	XmlToJson()
+// 	JsonToXml()
+// }
