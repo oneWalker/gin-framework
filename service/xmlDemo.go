@@ -5,7 +5,6 @@ package service
 import (
 	"encoding/json"
 	"encoding/xml"
-
 	"github.com/sirupsen/logrus"
 )
 
@@ -79,10 +78,31 @@ func JsonToXml() {
 	logrus.Info(string(sdXml))
 }
 
-// main函数用于测试，需要运行使用时需要引入package main
+func MapToXml() (res []byte) {
+	m := make(map[string]interface{})
+	m["name"] = "wang"
+	m["age"] = 25
+	buf, _ := xml.Marshal(StringMap(m))
+	logrus.Info(string(buf))
+	return buf
+}
+
+func XmlToMap(buf []byte) (res map[string]interface{}) {
+	stringMap := make(map[string]interface{})
+	err := xml.Unmarshal(buf, (*StringMap)(&stringMap))
+	if err != nil {
+		logrus.Info(err)
+	}
+	return stringMap
+}
+
+// // main函数用于测试，需要运行使用时需要引入package main
 // func main() {
 // 	XmlToStruct()
 // 	StructToXml()
 // 	XmlToJson()
 // 	JsonToXml()
+// 	//无法单独运行，需要放在项目中
+// 	buf := MapToXml()
+// 	XmlToMap(buf)
 // }

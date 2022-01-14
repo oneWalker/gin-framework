@@ -62,13 +62,21 @@
     * 参考网站:<https://www.cnblogs.com/Paul-watermelon/p/11386392.html>
   * [ ]  RPC方式请求
 * [ ] App网络传输序列化协议
-  * [ ] json json,struct,map之间的转换
+  * [x] json json,struct,map之间的转换
+    * json to struct
+    * struct to json
+    * json to Map
+    * map to json
+    * map to struct
+    * struct to map
   * [ ] protobuf - 一般提供给RPC
   * [x] XML - xml,struct,json之间的转换
     * XMLtoStruct
     * XMLtoJson
       * XML到Json并不提供直接相关，可使用Struct作为中间转换
       * 第三方工具XML转换成json：<https://github.com/basgys/goxml2json>
+    * XMLToMap
+      * 通过重写XMl相关的生成和解析函数Marshal和Unmarshal
 
 * Package相关
   * [x] logrus 日志输送相关框架，与原有的go日志包相互兼容
