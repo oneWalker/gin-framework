@@ -73,7 +73,14 @@ func main() {
 	// r := initialize.Routers()
 	// r.Run(":8080")
 
-	//优雅的启动和重启方式
+	//RPC相关的初始化
+	//初始化rpc服务
+	// srv := grpc.NewServer()
+
+	//初始化grpc服务
+	//初始化rpc客户端
+
+	//HTTP的优雅启动和重启方式
 	srv := &http.Server{
 		Addr:    ":8080",
 		Handler: initialize.Routers(),

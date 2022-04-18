@@ -43,8 +43,7 @@
   * 数据统一处理中间件：go的参数校验需要根据相应的
   * [ ]  jwt或者token验证中间件
   * [ ]  数据校验插件
-* [ ] RPC API相关
-  * [ ]常见实现方案gRPC
+* [ ] RPC 统一路由设计
 * [x]  单元测试
   * 参考demo<https://zhuanlan.zhihu.com/p/90632661>
 * [ ]  消息中间件
@@ -60,8 +59,8 @@
 * 请求第三方接口
   * [x]  HTTP方式请求
     * 参考网站:<https://www.cnblogs.com/Paul-watermelon/p/11386392.html>
-  * [ ]  RPC方式请求
-* [ ] App网络传输序列化协议
+  * [x]  RPC方式测试：postman已经支持
+* [x] App网络传输序列化协议
   * [x] json json,struct,map之间的转换
     * json to struct
     * struct to json
@@ -69,7 +68,10 @@
     * map to json
     * map to struct
     * struct to map
-  * [ ] protobuf - 一般提供给RPC
+  * [x] protobuf - 一般提供给RPC
+    * RPC例子：https://github.com/marmotedu/gopractise-demo/tree/main/apistyle/greeter
+    * grpc的4种类型的服务方法：简单模式，服务端数据流模式，客户端数据流模式和双向数据流模式
+    * 目录grpc下
   * [x] XML - xml,struct,json之间的转换
     * XMLtoStruct
     * XMLtoJson
