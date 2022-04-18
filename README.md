@@ -80,10 +80,11 @@
     * XMLToMap
       * 通过重写XMl相关的生成和解析函数Marshal和Unmarshal
 
-* Package相关
+* Package相关,应用构建相关：https://time.geekbang.org/column/article/395705
   * [x] logrus 日志输送相关框架，与原有的go日志包相互兼容
-  * [ ] cobra<https://github.com/spf13/cobra> 是一个用来生成应用和命令文件的脚手架
-  * [ ] viber<https://github.com/spf13/viber> 读取golang相关的一些配置文件
+  * [ ] Pflag：命令行参数解析工具
+  * [ ] cobra<https://github.com/spf13/cobra> 现代化的命令行框架
+  * [ ] viber<https://github.com/spf13/viber> 配置解析工具
 * 其他脚手架参考链接
   * go-microservices-boilerplate<https://github.com/FeifeiyuM/go-microservices-boilerplate>
   * blog-service<https://github.com/go-programming-tour-book/blog-service>
