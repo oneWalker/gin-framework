@@ -82,9 +82,11 @@
 
 * Package相关,应用构建相关：https://time.geekbang.org/column/article/395705
   * [x] logrus 日志输送相关框架，与原有的go日志包相互兼容
-  * [ ] Pflag：命令行参数解析工具
+  * [ ] viber<https://github.com/spf13/viber> 解析配置文件参数解析工具，也具有5个函数支持环境变量
+  * [ ] Pflag<https://github.com/govenue/pflag>：命令行参数解析工具
   * [ ] cobra<https://github.com/spf13/cobra> 现代化的命令行框架
-  * [ ] viber<https://github.com/spf13/viber> 配置解析工具
+    * Pflag + Cobra替代方案urfave/cli<https://github.com/urfave/cli>
+* [ ] SDK Demo
 * 其他脚手架参考链接
   * go-microservices-boilerplate<https://github.com/FeifeiyuM/go-microservices-boilerplate>
   * blog-service<https://github.com/go-programming-tour-book/blog-service>
