@@ -1,0 +1,35 @@
+service: task # http/task
+
+listen: 0.0.0.0:8088
+
+mode: debug # release
+
+db:
+  mongodb:
+    addr: 212.64.36.250:1017
+    database: examination_db
+    username: examination_admin
+    password: class1oo00
+  mysql:
+    user: root
+    password: wSmyY44e5J9C
+    host: 212.64.36.250
+    port: 1306
+    dbname: examination_new_db
+    max_idle_conns: 10
+    max_open_conns: 100
+
+amqp:
+  rabbitmq:
+    host: 212.64.36.250
+    port: 1370
+    username: class
+    password: uKSRpZuzPjGElYJW
+    dlx_queue: dlx.exam.queue
+    dlx_exchange: dlx.exam.exchange
+
+agora:
+  cdn: https://examination-record-1259785003.cos.ap-beijing.myqcloud.com/
+
+file:
+  rootPath: https://examination-1259785003.file.myqcloud.com/

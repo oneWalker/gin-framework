@@ -73,9 +73,8 @@ func main() {
 	// r := initialize.Routers()
 	// r.Run(":8080")
 
-	//RPC相关的初始化
-	//初始化rpc服务
-	// srv := grpc.NewServer()
+	//RPC相关的初始化:位于文件夹grpc中
+	//srv := grpc.NewServer()
 
 	//初始化grpc服务
 	//初始化rpc客户端

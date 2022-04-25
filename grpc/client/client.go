@@ -35,7 +35,7 @@ const (
 )
 
 //可以将其改写成init函数，将其导出到main当中g
-func main() {
+func init() {
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {

@@ -1,0 +1,25 @@
+service: http # http/task
+
+listen: 0.0.0.0:8088
+
+mode: debug # release
+
+db:
+  mongodb:
+    addr: 212.64.36.250:1017
+    database: examination_db
+    username: examination_admin
+    password: class1oo00
+  mysql:
+    user: root
+    password: wSmyY44e5J9C
+    host: 212.64.36.250
+    port: 1306
+    dbname: examination_new_db
+    max_idle_conns: 10
+    max_open_conns: 100
+
+tencentCOS:
+  uploadFile: https://api-exam.qa.class100.com/tencent/v1/cos/upload/file
+  preName: https://examination-1259785003.file.myqcloud.com/qa/billDetail
+  preFace: https://examination-1259785003.file.myqcloud.com/
