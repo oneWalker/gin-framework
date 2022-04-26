@@ -45,18 +45,30 @@
   * [x]  数据校验插件
   * [x]  返回error代码规则化
 * [x] RPC
-* [x]  单元测试
+* [ ]  单元测试
   * 参考demo<https://zhuanlan.zhihu.com/p/90632661>
-* [ ]  消息中间件
+  * 利用Go gets可自动生成相关的单元测试的代码
+  * [ ] （修复中）修复之前存在的手动测试的代码，将其都使用单元测试的方式:有interface，实际传入的函数不是直接引用的包可测试
+* [X]
+* [x]  消息中间件
 * [x]  安全和跨域配置
 * [x]  全局变量相关
 * [x]  区分开发环境和正式环境
 * [ ]  链路追踪
 * 编译程序应用
-  * [ ] Makefile相关
+  * [x] Makefile相关
+    * 相关学习说明文档：https://time.geekbang.org/column/article/388920
+    ```makefile
+    target ...: prerequisites ...
+        command
+        ...
+        ...
+    ```
+
 * [x]  优雅重启和停止
   * b4go1.8:[manners](https://github.com/braintree/manners),[graceful](https://github.com/tylerstillwater/graceful),[grace](https://github.com/facebookarchive/grace)
   * now:内置方法Shutdown()
+* [ ]常用的调试工具，比如Delve
 * 请求第三方接口
   * [x]  HTTP方式请求
     * 参考网站:<https://www.cnblogs.com/Paul-watermelon/p/11386392.html>
@@ -83,14 +95,22 @@
 
 * Package相关,应用构建相关：https://time.geekbang.org/column/article/395705
   * [x] logrus 日志输送相关框架，与原有的go日志包相互兼容
-  * [ ] viper<https://github.com/spf13/viper> 解析配置文件参数解析工具，也具有5个函数支持环境变量：在文件夹viperconf
+  * [x] viper<https://github.com/spf13/viper> 解析配置文件参数解析工具，也具有5个函数支持环境变量：在文件夹viperconf
   * [x] Pflag<https://github.com/govenue/pflag>：命令行参数解析工具
-  * [x] cobra<https://github.com/spf13/cobra> 现代化的命令行框架
+  * [x] cobra<https://github.com/spf13/cobra> 现代化的命令行框架：
+    * cobra+viperconf实现的功能和main.go里面的作用是一样的
     * Pflag + Cobra替代方案urfave/cli<https://github.com/urfave/cli>
-* [ ] SDK Demo
+* [x] SDK Demo
+  * 注意初始化项目的时候，项目名字采用：`/github.com/${organization}/${projectName}/${version}`
+  * SDK在导出的时候就是导出的当前的主要目录，不需要在其他地方再进行导出
+  * 区分：Node.js相关的包的导出函数都是放置在`/${package}/src`下的`.js`文件
 * 其他脚手架参考链接
+  * colin在极客时间上的课程和项目：<https://github.com/marmotedu>
   * go-microservices-boilerplate<https://github.com/FeifeiyuM/go-microservices-boilerplate>
   * blog-service<https://github.com/go-programming-tour-book/blog-service>
   * 参考学习例子:<https://github.com/yeqown/playground/tree/master/gonic>
 
-注意，db相关的数据连接放置在pkg/db
+* 注意，db相关的数据连接放置在pkg/db
+
+* ToDo
+  * [ ]service中的xmlDemo的单元测试值

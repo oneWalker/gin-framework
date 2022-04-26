@@ -1,10 +1,9 @@
 package service
 
-//package main
-
 import (
 	"encoding/json"
 	"encoding/xml"
+
 	"github.com/sirupsen/logrus"
 )
 
@@ -16,22 +15,15 @@ type xmlStruct struct {
 	Body    string   `xml:"body"`
 }
 
-func XmlToStruct() (xmlRes xmlStruct) {
-	xmlDoc := `<?xml version="1.0" encoding="UTF-8"?>
-                <note>
-                  <to>Tove</to>
-                  <from>Jani</from>
-                  <heading>Reminder</heading>
-                  <body>Don't forget me this weekend!</body>
-                </note>`
-	x := xmlStruct{}
-	err := xml.Unmarshal([]byte(xmlDoc), &x)
+func XmlToStruct(xmlDoc string) xmlStruct {
+	x := &xmlStruct{}
+	err := xml.Unmarshal([]byte(xmlDoc), x)
 	if err != nil {
 		logrus.Fatalf(err.Error())
 	} else {
-		logrus.Info(x.Body)
+		logrus.Info(x.XMLName.Local)
 	}
-	return x
+	return *x
 	// res, _ := json.Marshal(x)
 	// logrus.Info(reflect.TypeOf(res))
 	// logrus.Info(reflect.TypeOf(x))
@@ -41,9 +33,8 @@ func XmlToStruct() (xmlRes xmlStruct) {
 
 }
 
-func StructToXml() {
+func StructToXml(sd xmlStruct) string {
 	//struct to xml
-	sd := xmlStruct{To: "Pika", From: "Brian", Heading: "No Subject", Body: "I love you"}
 	//struct添加新对象,使用append
 
 	sdXml, _ := xml.Marshal(&sd)
@@ -52,42 +43,48 @@ func StructToXml() {
 	//得到的sdXml都是字节流
 	logrus.Info(sdXml)
 	logrus.Info(string(sdXml))
+	return string(sdXml)
 }
 
 //XmlToJson Directly:https://github.com/basgys/goxml2json
-// the demo provide the way by the Struct
-func XmlToJson() (res []uint8) {
-	//xml to struct
-	x := XmlToStruct()
-	//struct to json
-	res, _ = json.Marshal(x)
-	logrus.Info(string(res))
+//the demo provide the way by the Struct
+//byte is equal to uint8
+//string is equal to []byte
+func XmlToJson(xml string) []byte {
+
+	//方法1: first xml to struct, then struct to json
+	x := XmlToStruct(xml)
+
+	res, _ := json.Marshal(x)
+
+	//方法2: Convert xml to json directly
+	// res, _ = goxml2json.XmlToJson([]byte(xml))
+
 	return res
 }
 
-func JsonToXml() {
-	x := XmlToJson()
+func JsonToXml(jsonStr []byte) []byte {
 	var f xmlStruct
 	//json str to struct
-	json.Unmarshal(x, &f)
-	logrus.Info("json")
-	logrus.Info(f)
+	json.Unmarshal(jsonStr, &f)
 	//stuct to xml
 	sdXml, _ := xml.Marshal(&f)
+
 	logrus.Info(sdXml)
 	logrus.Info(string(sdXml))
+	return sdXml
 }
 
-func MapToXml() (res []byte) {
-	m := make(map[string]interface{})
-	m["name"] = "wang"
-	m["age"] = 25
+func MapToXml(m map[string]interface{}) (res []byte) {
+	// m := make(map[string]interface{})
+	// m["name"] = "wang"
+	// m["age"] = 25
 	buf, _ := xml.Marshal(StringMap(m))
 	logrus.Info(string(buf))
 	return buf
 }
 
-func XmlToMap(buf []byte) (res map[string]interface{}) {
+func XmlToMap(buf []byte) map[string]interface{} {
 	stringMap := make(map[string]interface{})
 	err := xml.Unmarshal(buf, (*StringMap)(&stringMap))
 	if err != nil {
@@ -95,14 +92,3 @@ func XmlToMap(buf []byte) (res map[string]interface{}) {
 	}
 	return stringMap
 }
-
-// // main函数用于测试，需要运行使用时需要引入package main
-// func main() {
-// 	XmlToStruct()
-// 	StructToXml()
-// 	XmlToJson()
-// 	JsonToXml()
-// 	//无法单独运行，需要放在项目中
-// 	buf := MapToXml()
-// 	XmlToMap(buf)
-// }

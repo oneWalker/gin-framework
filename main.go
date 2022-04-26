@@ -76,9 +76,6 @@ func main() {
 	//RPC相关的初始化:位于文件夹grpc中
 	//srv := grpc.NewServer()
 
-	//初始化grpc服务
-	//初始化rpc客户端
-
 	//HTTP的优雅启动和重启方式
 	srv := &http.Server{
 		Addr:    ":8080",
@@ -94,7 +91,8 @@ func main() {
 
 	// Wait for interrupt signal to gracefully shutdown the server with
 	// a timeout of 5 seconds.
-	quit := make(chan os.Signal)
+	quit := make(chan os.Signal, 5)
+	//signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	signal.Notify(quit, os.Interrupt)
 	<-quit
 	logrus.Println("Shutdown Server ...")
@@ -105,5 +103,4 @@ func main() {
 		logrus.Fatal("Server Shutdown:", err)
 	}
 	logrus.Println("Server exiting")
-
 }

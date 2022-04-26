@@ -1,7 +1,5 @@
 package service
 
-//package main
-
 import (
 	"encoding/json"
 	"io"
@@ -114,12 +112,18 @@ func MapToJson() {
 	logrus.Info(string(jsonStr))
 }
 
-// main函数用于测试，需要运行使用时需要引入package main
-// func main() {
-// 	JsonToStruct()
-// 	StructToJson()
-// 	structRes := MapToStruct()
-// 	StructToMap(structRes)
-// 	JsonToMap()
-// 	MapToJson()
-// }
+//参考：https://github.com/emacampolo/gomparator/blob/master/json_util.go#L10
+//一个简单的json比较大小，都为json字节流的情况下，比较大小
+func JSONIsEqual(j1 []byte, j2 []byte) (bool, error) {
+	var i1, i2 interface{}
+
+	if err := json.Unmarshal(j1, &i1); err != nil {
+		return false, err
+	}
+
+	if err := json.Unmarshal(j2, &i2); err != nil {
+		return false, err
+	}
+
+	return reflect.DeepEqual(i1, i2), nil
+}
