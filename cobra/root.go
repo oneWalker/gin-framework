@@ -2,8 +2,8 @@ package codra
 
 import (
 	"fmt"
-	"gin-practice/codra/cmd/http"
-	"gin-practice/codra/cmd/task"
+	"gin-practice/cobra/cmd/http"
+	"gin-practice/cobra/cmd/task"
 	"os"
 
 	"github.com/sirupsen/logrus"

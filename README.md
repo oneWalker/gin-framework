@@ -83,7 +83,7 @@
 
 * Package相关,应用构建相关：https://time.geekbang.org/column/article/395705
   * [x] logrus 日志输送相关框架，与原有的go日志包相互兼容
-  * [ ] viber<https://github.com/spf13/viber> 解析配置文件参数解析工具，也具有5个函数支持环境变量
+  * [ ] viper<https://github.com/spf13/viper> 解析配置文件参数解析工具，也具有5个函数支持环境变量：在文件夹viperconf
   * [x] Pflag<https://github.com/govenue/pflag>：命令行参数解析工具
   * [x] cobra<https://github.com/spf13/cobra> 现代化的命令行框架
     * Pflag + Cobra替代方案urfave/cli<https://github.com/urfave/cli>
