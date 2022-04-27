@@ -104,7 +104,8 @@
   * 注意初始化项目的时候，项目名字采用：`/github.com/${organization}/${projectName}/${version}`
   * SDK在导出的时候就是导出的当前的主要目录，不需要在其他地方再进行导出
   * 区分：Node.js相关的包的导出函数都是放置在`/${package}/src`下的`.js`文件
-* 其他脚手架参考链接
+* 其他参考资料
+  * go career path:`/resources/go_career_path`
   * colin在极客时间上的课程和项目：<https://github.com/marmotedu>
   * go-microservices-boilerplate<https://github.com/FeifeiyuM/go-microservices-boilerplate>
   * blog-service<https://github.com/go-programming-tour-book/blog-service>
@@ -112,5 +113,5 @@
 
 * 注意，db相关的数据连接放置在pkg/db
 
-* ToDo
-  * [ ] service中的xmlDemo的单元测试值
+* ToDo:个人参考
+  * [ ] service中的jsonDemo的单元测试值

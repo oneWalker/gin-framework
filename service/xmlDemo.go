@@ -76,14 +76,19 @@ func JsonToXml(jsonStr []byte) []byte {
 }
 
 func MapToXml(m map[string]interface{}) (res []byte) {
-	buf, _ := xml.Marshal(Map(m))
+	buf, err := xml.Marshal(Map(m))
+	if err != nil {
+		logrus.Error(err)
+	}
 	logrus.Info(string(buf))
 	return buf
 }
 
 func XmlToMap(buf []byte) map[string]interface{} {
 	var rm map[string]interface{}
-	xml.Unmarshal(buf, (*Map)(&rm))
-	logrus.Warn(rm)
+	err := xml.Unmarshal(buf, (*Map)(&rm))
+	if err != nil {
+		logrus.Error(err)
+	}
 	return rm
 }
