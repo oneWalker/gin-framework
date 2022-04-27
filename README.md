@@ -68,7 +68,7 @@
 * [x]  优雅重启和停止
   * b4go1.8:[manners](https://github.com/braintree/manners),[graceful](https://github.com/tylerstillwater/graceful),[grace](https://github.com/facebookarchive/grace)
   * now:内置方法Shutdown()
-* [ ]常用的调试工具，比如Delve
+* [ ] 常用的调试工具，比如Delve
 * 请求第三方接口
   * [x]  HTTP方式请求
     * 参考网站:<https://www.cnblogs.com/Paul-watermelon/p/11386392.html>
@@ -113,4 +113,4 @@
 * 注意，db相关的数据连接放置在pkg/db
 
 * ToDo
-  * [ ]service中的xmlDemo的单元测试值
+  * [ ] service中的xmlDemo的单元测试值

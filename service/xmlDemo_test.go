@@ -15,10 +15,10 @@ var sd = xmlStruct{To: `Tove`, From: `Jani`, Heading: `Reminder`, Body: `Dont_fo
 var jsonStr = `{"To":"Tove","From":"Jani","Heading":"Reminder","Body":"Dont_forget_me_this_weekend!"}`
 
 var mapStr = map[string]interface{}{
-	"to":      "Tove",
-	"from":    "Jani",
-	"heading": "Reminder",
-	"body":    "Dont_forget_me_this_weekend!",
+	"To":      "Tove",
+	"From":    "Jani",
+	"Heading": "Reminder",
+	"Body":    "Dont_forget_me_this_weekend!",
 }
 
 func TestXmlToStruct(t *testing.T) {
@@ -137,7 +137,7 @@ func TestJsonToXml(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-
+			//json在marshal的过程会将key小写化
 			if gotRes := Header + string(JsonToXml(tt.args.jsonStr)); !reflect.DeepEqual(gotRes, string(tt.wantRes)) {
 				t.Errorf("JsonToXml() = %v, want %v", string(gotRes), string(tt.wantRes))
 			}
@@ -156,14 +156,14 @@ func TestMapToXml(t *testing.T) {
 	}{
 		{
 			name:    "TestMapToXml",
-			args:    args{map[string]interface{}{"to": "Tove", "from": "Jani", "heading": "Reminder", "body": "Dont_forget_me_this_weekend!"}},
+			args:    args{mapStr},
 			wantRes: []byte(xmlstring),
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if gotRes := MapToXml(tt.args.m); !reflect.DeepEqual(gotRes, tt.wantRes) {
-				t.Errorf("MapToXml() = %v, want %v", gotRes, tt.wantRes)
+				t.Errorf("MapToXml() = %v, want %v", string(gotRes), string(tt.wantRes))
 			}
 		})
 	}
@@ -181,13 +181,13 @@ func TestXmlToMap(t *testing.T) {
 		{
 			name:    "TestXmlToMap",
 			args:    args{[]byte(xmlstring)},
-			wantRes: map[string]interface{}{"to": "Tove", "from": "Jani", "heading": "Reminder", "body": "Dont_forget_me_this_weekend!"},
+			wantRes: mapStr,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if gotRes := XmlToMap(tt.args.buf); !reflect.DeepEqual(gotRes, tt.wantRes) {
-				t.Errorf("XmlToMap() = %v, want %v", gotRes, tt.wantRes)
+				t.Errorf("MapToXml() = %v, want %v", gotRes, tt.wantRes)
 			}
 		})
 	}

@@ -5,7 +5,7 @@ import (
 	"io"
 )
 
-type StringMap map[string]interface{}
+type Map map[string]interface{}
 
 type xmlMapEntry struct {
 	XMLName xml.Name
@@ -13,7 +13,7 @@ type xmlMapEntry struct {
 }
 
 //重新定义map转xml
-func (m StringMap) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+func (m Map) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	if len(m) == 0 {
 		return nil
 	}
@@ -31,8 +31,8 @@ func (m StringMap) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 }
 
 //重新定义xml转map
-func (m *StringMap) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
-	*m = StringMap{}
+func (m *Map) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+	*m = Map{}
 	for {
 		var e xmlMapEntry
 
