@@ -48,8 +48,9 @@
 * [ ]  单元测试
   * 参考demo<https://zhuanlan.zhihu.com/p/90632661>
   * 利用Go gets可自动生成相关的单元测试的代码
-  * [ ] （修复中）修复之前存在的手动测试的代码，将其都使用单元测试的方式:有interface，实际传入的函数不是直接引用的包可测试
-* [X]
+  * [ ] xmlDemo中的单元测试
+  * [ ] jsonDemo中的单元测试
+* [X]  压力测试： 压力测试文件参考：`service/xmlDemobech_test.go`
 * [x]  消息中间件
 * [x]  安全和跨域配置
 * [x]  全局变量相关
@@ -112,6 +113,3 @@
   * 参考学习例子:<https://github.com/yeqown/playground/tree/master/gonic>
 
 * 注意，db相关的数据连接放置在pkg/db
-
-* ToDo:个人参考
-  * [ ] service中的jsonDemo的单元测试值
