@@ -108,8 +108,9 @@
 * 其他参考资料
   * go career path:`/resources/go_career_path`
   * colin在极客时间上的课程和项目：<https://github.com/marmotedu>
+  * GoNotes：<https://github.com/xuesongbj/Go-Notes>
   * go-microservices-boilerplate<https://github.com/FeifeiyuM/go-microservices-boilerplate>
   * blog-service<https://github.com/go-programming-tour-book/blog-service>
-  * 参考学习例子:<https://github.com/yeqown/playground/tree/master/gonic>
+  * 参考三方包demo:<https://github.com/yeqown/playground/tree/master/gonic>
 
 * 注意，db相关的数据连接放置在pkg/db
