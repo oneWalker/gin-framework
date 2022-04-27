@@ -107,6 +107,7 @@
   * 区分：Node.js相关的包的导出函数都是放置在`/${package}/src`下的`.js`文件
 * 其他参考资料
   * go career path:`/resources/go_career_path`
+  * 保姆级学习教程：<https://geektutu.com/post/geerpc-day7.html>
   * colin在极客时间上的课程和项目：<https://github.com/marmotedu>
   * GoNotes：<https://github.com/xuesongbj/Go-Notes>
   * go-microservices-boilerplate<https://github.com/FeifeiyuM/go-microservices-boilerplate>
