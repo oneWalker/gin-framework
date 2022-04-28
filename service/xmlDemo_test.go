@@ -7,14 +7,14 @@ import (
 	"testing"
 )
 
-const xmlstring = `<?xml version="1.0" encoding="UTF-8"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Dont_forget_me_this_weekend!</body></note>`
+const xmlstring = `<?xml version="1.0" encoding="UTF-8"?><note><To>Tove</To><From>Jani</From><Heading>Reminder</Heading><Body>Dont_forget_me_this_weekend!</Body></note>`
 const Header = `<?xml version="1.0" encoding="UTF-8"?>`
 
 var sd = xmlStruct{To: `Tove`, From: `Jani`, Heading: `Reminder`, Body: `Dont_forget_me_this_weekend!`}
 
 var jsonStr = `{"To":"Tove","From":"Jani","Heading":"Reminder","Body":"Dont_forget_me_this_weekend!"}`
 
-var mapStr = map[string]interface{}{
+var mapStr = map[string]string{
 	"To":      "Tove",
 	"From":    "Jani",
 	"Heading": "Reminder",
@@ -137,7 +137,9 @@ func TestJsonToXml(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+
 			//json在marshal的过程会将key小写化
+
 			if gotRes := Header + string(JsonToXml(tt.args.jsonStr)); !reflect.DeepEqual(gotRes, string(tt.wantRes)) {
 				t.Errorf("JsonToXml() = %v, want %v", string(gotRes), string(tt.wantRes))
 			}
@@ -147,7 +149,7 @@ func TestJsonToXml(t *testing.T) {
 
 func TestMapToXml(t *testing.T) {
 	type args struct {
-		m map[string]interface{}
+		m map[string]string
 	}
 	tests := []struct {
 		name    string
@@ -176,7 +178,7 @@ func TestXmlToMap(t *testing.T) {
 	tests := []struct {
 		name    string
 		args    args
-		wantRes map[string]interface{}
+		wantRes map[string]string
 	}{
 		{
 			name:    "TestXmlToMap",

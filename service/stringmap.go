@@ -5,14 +5,15 @@ import (
 	"io"
 )
 
-type Map map[string]interface{}
+type Map map[string]string
 
 type xmlMapEntry struct {
 	XMLName xml.Name
-	Value   interface{} `xml:",chardata"`
+	Value   string `xml:",chardata"`
 }
 
-//重新定义map转xml
+// MarshalXML marshals the map to XML, with each key in the map being a
+// tag and it's corresponding value being it's contents.
 func (m Map) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	if len(m) == 0 {
 		return nil
@@ -30,7 +31,14 @@ func (m Map) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	return e.EncodeToken(start.End())
 }
 
-//重新定义xml转map
+// UnmarshalXML unmarshals the XML into a map of string to strings,
+// creating a key in the map for each tag and setting it's value to the
+// tags contents.
+//
+// The fact this function is on the pointer of Map is important, so that
+// if m is nil it can be initialized, which is often the case if m is
+// nested in another xml structurel. This is also why the first thing done
+// on the first line is initialize it.
 func (m *Map) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	*m = Map{}
 	for {

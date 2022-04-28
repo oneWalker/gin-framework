@@ -48,7 +48,7 @@
 * [ ]  单元测试
   * 参考demo<https://zhuanlan.zhihu.com/p/90632661>
   * 利用Go gets可自动生成相关的单元测试的代码
-  * [ ] xmlDemo中的单元测试
+  * [x] xmlDemo中的单元测试
   * [ ] jsonDemo中的单元测试
 * [X]  压力测试： 压力测试文件参考：`service/xmlDemobech_test.go`
 * [x]  消息中间件
@@ -103,6 +103,7 @@
     * Pflag + Cobra替代方案urfave/cli<https://github.com/urfave/cli>
 * [x] SDK Demo
   * 注意初始化项目的时候，项目名字采用：`/github.com/${organization}/${projectName}/${version}`
+  * 发布：1.项目名字为对应项目的地址；2.新建一个`doc.go`里面命名包的名字
   * SDK在导出的时候就是导出的当前的主要目录，不需要在其他地方再进行导出
   * 区分：Node.js相关的包的导出函数都是放置在`/${package}/src`下的`.js`文件
 * 其他参考资料

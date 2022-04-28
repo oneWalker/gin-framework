@@ -75,7 +75,8 @@ func JsonToXml(jsonStr []byte) []byte {
 	return sdXml
 }
 
-func MapToXml(m map[string]interface{}) (res []byte) {
+func MapToXml(m map[string]string) (res []byte) {
+	//convert required the sturct defined in stringmap
 	buf, err := xml.Marshal(Map(m))
 	if err != nil {
 		logrus.Error(err)
@@ -84,8 +85,10 @@ func MapToXml(m map[string]interface{}) (res []byte) {
 	return buf
 }
 
-func XmlToMap(buf []byte) map[string]interface{} {
-	var rm map[string]interface{}
+//xml convert only can support map[string]string cannot support map[string]interface{}
+
+func XmlToMap(buf []byte) map[string]string {
+	var rm map[string]string
 	err := xml.Unmarshal(buf, (*Map)(&rm))
 	if err != nil {
 		logrus.Error(err)
