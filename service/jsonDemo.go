@@ -12,59 +12,48 @@ import (
 )
 
 type User struct {
-	Name     string `json:"name"`
-	Password string `json:"password"`
+	Name     string `json:"Name"`
+	Password string `json:"Password"`
 }
 
-//打印当前状态的一种方法
+//print current function name
 func printMyName() string {
 	funcName, file, line, ok := runtime.Caller(1)
-	logrus.Info("名字：", funcName, "文件位置：", file, "函数文本位置：", line, ok)
+	logrus.Info("name：", funcName, "file location：", file, "the current function's file name ：", line, ok)
 	return runtime.FuncForPC(funcName).Name()
 }
 
-//简单方法
-func JsonToStruct() {
-	logrus.Info(printMyName())
-	jsonStr := `{"name":"test","password":"123456"}`
+//just use exsited function
+func JsonToStruct1(jsonStr string) User {
 	var user User
 	json.Unmarshal([]byte(jsonStr), &user)
 	logrus.Info(user)
+	return user
 }
 
-//通过io流的方式进行相关的读取
-func JsonToStruct1() {
-	logrus.Info(printMyName())
-	jsonStr := `{"name":"test","password":"123456"}`
+//json to struct wih io streaming way
+func JsonToStruct2(jsonStr string) User {
 	var user User
-	//解析json到结构体，指定长度
+	//decode json to struct with fixed size
 	userReader := io.LimitReader(strings.NewReader(jsonStr), 1024)
 	errs := json.NewDecoder(userReader).Decode(&user)
 	if errs != nil {
 		logrus.Info(errs.Error())
 	}
 	logrus.Info(user)
+	return user
 }
 
-func StructToJson() {
-	logrus.Info(printMyName())
-	user := User{
-		Name:     "test",
-		Password: "123456",
-	}
+func StructToJson(user User) []byte {
 	jsonBytes, err := json.Marshal(user)
 	if err != nil {
 		logrus.Info(err)
 	}
 	logrus.Info(string(jsonBytes))
+	return jsonBytes
 }
 
-func MapToStruct() (res User) {
-	logrus.Info(printMyName())
-	userMap := make(map[string]interface{})
-	userMap["Name"] = "test"
-	userMap["Password"] = "123456"
-
+func MapToStruct(userMap map[string]interface{}) (res User) {
 	var user User
 	err := mapstructure.Decode(userMap, &user)
 	if err != nil {
@@ -75,7 +64,6 @@ func MapToStruct() (res User) {
 }
 
 func StructToMap(obj interface{}) map[string]interface{} {
-	logrus.Info(printMyName())
 	keys := reflect.TypeOf(obj)
 	values := reflect.ValueOf(obj)
 	logrus.Info("keys：", keys, " ", "values：", values)
@@ -87,29 +75,29 @@ func StructToMap(obj interface{}) map[string]interface{} {
 	return data
 }
 
-func JsonToMap() {
-	logrus.Info(printMyName())
-	jsonStr := `{"name":"test","password":"12345"}`
+func JsonToMap(jsonStr string) map[string]interface{} {
 	var mapResult map[string]interface{}
 	err := json.Unmarshal([]byte(jsonStr), &mapResult)
 	if err != nil {
 		logrus.Info(err)
 	}
 	logrus.Info(mapResult)
+	return mapResult
 }
 
-func MapToJson() {
-	logrus.Info(printMyName())
-	userMap := []map[string]interface{}{}
-	userMap1 := map[string]interface{}{"name": "test1", "password": "123456"}
-	userMap2 := map[string]interface{}{"name": "test2", "password": "123456"}
-	userMap = append(userMap, userMap1, userMap2)
-
-	jsonStr, err := json.Marshal(userMap)
+// support multi-dimensional map to multi-level json
+func MapToJson(userMap map[string]interface{}) []byte {
+	//extend map to 2 dimension
+	// userMap := []map[string]interface{}{}
+	// userMap1 := map[string]interface{}{"name": "test1", "password": "123456"}
+	// userMap2 := map[string]interface{}{"name": "test2", "password": "123456"}
+	// userMap = append(userMap, userMap1, userMap2)
+	objson, err := json.Marshal(userMap)
 	if err != nil {
 		logrus.Info(err)
 	}
-	logrus.Info(string(jsonStr))
+	logrus.Info(string(objson))
+	return objson
 }
 
 //参考：https://github.com/emacampolo/gomparator/blob/master/json_util.go#L10

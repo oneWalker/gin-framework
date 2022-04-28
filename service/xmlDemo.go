@@ -7,12 +7,13 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// stuct content definition: before Unmarhsal, type, after Marshal
 type xmlStruct struct {
-	XMLName xml.Name `xml:"note"`
-	To      string   `xml:"to"`
-	From    string   `xml:"from"`
-	Heading string   `xml:"heading"`
-	Body    string   `xml:"body"`
+	XMLName xml.Name `xml:"Note"`
+	To      string   `xml:"To"`
+	From    string   `xml:"From"`
+	Heading string   `xml:"Heading"`
+	Body    string   `xml:"Body"`
 }
 
 func XmlToStruct(xmlDoc string) xmlStruct {

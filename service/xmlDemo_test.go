@@ -3,11 +3,13 @@ package service
 import (
 	"encoding/json"
 	"encoding/xml"
+	"fmt"
+	"os"
 	"reflect"
 	"testing"
 )
 
-const xmlstring = `<?xml version="1.0" encoding="UTF-8"?><note><To>Tove</To><From>Jani</From><Heading>Reminder</Heading><Body>Dont_forget_me_this_weekend!</Body></note>`
+const xmlstring = `<?xml version="1.0" encoding="UTF-8"?><Note><To>Tove</To><From>Jani</From><Heading>Reminder</Heading><Body>Dont_forget_me_this_weekend!</Body></Note>`
 const Header = `<?xml version="1.0" encoding="UTF-8"?>`
 
 var sd = xmlStruct{To: `Tove`, From: `Jani`, Heading: `Reminder`, Body: `Dont_forget_me_this_weekend!`}
@@ -19,6 +21,17 @@ var mapStr = map[string]string{
 	"From":    "Jani",
 	"Heading": "Reminder",
 	"Body":    "Dont_forget_me_this_weekend!",
+}
+
+func TestMain(m *testing.M) {
+	XmlToStruct(xmlstring)
+	os.Exit(m.Run())
+}
+
+func ExampleXmlToJson() {
+	fmt.Print(string(XmlToJson(xmlstring)))
+	//Output:
+	//{"XMLName":{"Space":"","Local":"Note"},"To":"Tove","From":"Jani","Heading":"Reminder","Body":"Dont_forget_me_this_weekend!"}
 }
 
 func TestXmlToStruct(t *testing.T) {
@@ -38,12 +51,9 @@ func TestXmlToStruct(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			//generate structs时无法将其转化为相应的或者删除xmltoStruct中的xml的值,转换为json的时候可以转换到相应的note值
-			tt.wantXmlRes.XMLName = xml.Name{Local: "note"}
-
+			//xml.Unmarshal still remain the tag both in the head and tail in new sturct
+			tt.wantXmlRes.XMLName = xml.Name{Local: "Note"}
 			if gotXmlRes := XmlToStruct(tt.args.xmlDoc); !reflect.DeepEqual(gotXmlRes, tt.wantXmlRes) {
-				t.Logf(gotXmlRes.XMLName.Local)
-				t.Log(tt.wantXmlRes.XMLName.Local)
 				t.Errorf("XmlToStruct() = %v, want %v", gotXmlRes, tt.wantXmlRes)
 			}
 		})
@@ -137,9 +147,6 @@ func TestJsonToXml(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-
-			//json在marshal的过程会将key小写化
-
 			if gotRes := Header + string(JsonToXml(tt.args.jsonStr)); !reflect.DeepEqual(gotRes, string(tt.wantRes)) {
 				t.Errorf("JsonToXml() = %v, want %v", string(gotRes), string(tt.wantRes))
 			}

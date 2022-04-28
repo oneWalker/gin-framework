@@ -45,12 +45,16 @@
   * [x]  数据校验插件
   * [x]  返回error代码规则化
 * [x] RPC
-* [ ]  单元测试
+* [x] 单元测试
   * 参考demo<https://zhuanlan.zhihu.com/p/90632661>
   * 利用Go gets可自动生成相关的单元测试的代码
   * [x] xmlDemo中的单元测试
-  * [ ] jsonDemo中的单元测试
-* [X]  压力测试： 压力测试文件参考：`service/xmlDemobech_test.go`
+  * [x] jsonDemo中的单元测试
+  * [x] Mock 测试:原理是通过一个接口去抓取相应的值，可用于含有一些请求的测试
+* [X] 压力测试： 压力测试文件参考：`service/xmlDemobech_test.go`
+* [x] 示例测试：以`Example`开头
+* [x] TestMain 测试:对于项目启动前的测试,`TestMain`函数
+* [x] Fake 测试
 * [x]  消息中间件
 * [x]  安全和跨域配置
 * [x]  全局变量相关
